@@ -1,0 +1,34 @@
+{% extends "calc/layout.html" %}
+
+{% block body %}
+
+
+    <div class="container-fluid p-5">
+        <h3 class="text-white">Statistics</h3>
+        <br><br>
+        <form action="/stats" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control btn btn-sm btn-outline-light text-light fw-bolder"  value="Ungrouped data set" disabled>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="x" id="x" placeholder="Numbers">
+            <input type="submit" value="Solve" class="btn btn-sm btn-outline-light form-control">
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <h5 class="text-light"><u>Answer:</u></h5>
+        <br>
+        <div class="text-light bg-secondary">
+        <h5 class="ml-3" id="res" name="res">Mean: {{ mean }}</h5>
+        <h5 class="ml-3" id="res" name="res">Median: {{ M }}</h5>
+        <h5 class="ml-3" id="res" name="res">Mean Deviation: {{ meand }}</h5>
+        <h5 class="ml-3" id="res" name="res">Median Deviation: {{ Md }}</h5>
+        <h5 class="ml-3" id="res" name="res">Range: {{ range }}</h5>
+        <h5 class="ml-3" id="res" name="res">Variance: {{ var }}</h5>
+        <h5 class="ml-3" id="res" name="res">Standard Deviation: {{ sd }}</h5>
+        <h5 class="ml-3" id="res" name="res">Coefficient of variation: {{ cv }}</h5>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,48 @@
+{% extends "calc/layout.html" %}
+
+{% block body %}
+
+    <script  type="text/javascript">
+        function num(evt) {
+            
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 &&  ASCIICode > 57)
+                return false;
+            return true;
+        }
+    </script>
+
+    <div class="container-fluid p-5">
+        <h3 class="text-white">Trigonometric Functions</h3>
+        <br><br>
+        <form action="/trigo" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <select class="form-select btn btn-sm btn-outline-light" aria-label="fn" name="fn">
+                <option value="sin">sin</option>
+                <option value="cos">cos</option>
+                <option value="tan">tan</option>
+                <option value="cosec">cosec</option>
+                <option value="sec">sec</option>
+                <option value="cot">cot</option>
+              </select>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" onkeypress="return num(event)" name="x" id="x">
+            <select class="form-select btn btn-sm btn-outline-light" aria-label="unit" name="unit">
+                <option value="degree">&deg;</option>
+                <option value="radian">radian</option>
+            </select>
+            <input type="submit" value="Solve" class="btn btn-sm btn-outline-light form-control">
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <h5 class="text-light"><u>Answer:</u></h5>
+        <br>
+        <div class="text-light bg-secondary">
+        <h5 class="ml-3" id="res" name="res">{{ res }}</h5>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+

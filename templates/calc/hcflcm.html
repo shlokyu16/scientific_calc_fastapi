@@ -1,0 +1,33 @@
+{% extends "calc/layout.html" %}
+{% block body %}
+
+
+    <div class="container-fluid p-5">
+        <h3 class="text-white">HCF and LCM</h3>
+        <br><br>
+        <form action="/hcflcm" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <select class="form-select btn btn-sm btn-outline-light" aria-label="fn" name="fn" id="fn">
+                <option value="hcf">HCF</option>
+                <option value="lcm">LCM</option>
+              </select>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="x" id="x" placeholder="Numbers">
+            <input type="submit" value="Solve" class="btn btn-sm btn-outline-light form-control">
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <h5 class="text-light"><u>Answer:</u></h5>
+        <br>
+        <div class="text-light bg-secondary">
+        {% if eorn %}
+            <h5 class="ml-3" id="res" name="res">{{ error }}</h5>
+        {% else %}
+            <h5 class="ml-3" id="res" name="res">{{ res }}</h5>
+        {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+

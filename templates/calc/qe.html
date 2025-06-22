@@ -1,0 +1,45 @@
+{% extends "calc/layout.html" %}
+{% block body %}
+
+
+    <div class="container-fluid p-5">
+        <h3 class="text-white">Quadratic Equations Solver</h3>
+        <br><br>
+        <form action="/qe" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="a" id="a" placeholder="a">
+            <p class="form-control text-light bg-dark text-center fw-bolder fst-italic">x<sup>2</sup></p>
+            <p class="form-control text-light bg-dark text-center fw-light">+</p>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="b" id="b" placeholder="b">
+            <p class="form-control text-light bg-dark text-center fw-bolder fst-italic">x</p>
+            <p class="form-control text-light bg-dark text-center fw-light">+</p>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="c" id="c" placeholder="c">
+            <p class="form-control text-light bg-dark text-center fw-light">=</p>
+            <p class="form-control text-light bg-dark text-center fw-bolder fst-italic">0</p>
+            <input type="submit" value="Solve" class="btn btn-sm btn-outline-light form-control">
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <h5 class="text-light"><u>Answer:</u></h5>
+        <br>
+        <div class="text-light bg-secondary fst-italic">
+            {% if not eorn  %}
+                {% if e1 %}
+                    <h5 class="ml-5" id="res" name="res">1 real root found which is: {{ x2 }}</h5>
+                {% elif e2 %}
+                    <h5 class="ml-5" id="res" name="res">1 real root found which is: {{ x1 }}</h5>
+                {% elif eb  %}
+                    <h5 class="ml-5" id="res" name="res">Both roots are imaginary</h5>
+                {% else %}
+                    <h5 class="ml-5" id="res" name="res">Roots are: {{ x1 }}, {{ x2 }}</h5>
+                {% endif %}
+            {% else %}
+                <h5 class="ml-5" id="res" name="res">{{ error }}</h5>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+

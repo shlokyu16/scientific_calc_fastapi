@@ -1,0 +1,58 @@
+{% extends "calc/layout.html" %}
+
+{% block body %}
+
+    <script  type="text/javascript">
+
+        function bas(){
+            var select = document.getElementById("fn").value;
+            if (select == "ln"){
+                document.getElementById("base").value = "e"
+                document.getElementById("base").disabled = true;
+            }else{
+                document.getElementById("base").value = ""
+                document.getElementById("base").disabled = false;
+            }
+        }
+
+
+        function num(evt) {
+            
+            // Only ASCII character in that range allowed
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+            if (ASCIICode > 31 &&  ASCIICode > 57)
+                return false;
+            return true;
+        }
+    </script>
+
+    <div class="container-fluid p-5">
+        <h3 class="text-white">Logrithm Functions</h3>
+        <br><br>
+        <form action="/logln" method="post">
+        <div class="input-group input-group-sm mb-3">
+            <select onchange="bas()" class="form-select btn btn-sm btn-outline-light" aria-label="fn" name="fn" id="fn">
+                <option value="log">log</option>
+                <option value="ln">ln</option>
+              </select>
+            <input type="text" class="form-control btn btn-sm btn-outline-light" name="base" id="base" onkeypress="return num(event)" placeholder="base">
+            <input type="text" class="form-control btn btn-sm btn-outline-light" onkeypress="return num(event)" name="x" id="x" placeholder="value">
+            <input type="submit" value="Solve" class="btn btn-sm btn-outline-light form-control">
+        </div>
+    </form>
+    <br><br>
+    <div>
+        <h5 class="text-light"><u>Answer:</u></h5>
+        <br>
+        <div class="text-light bg-secondary">
+        {% if eorn %}
+            <h5 class="ml-3" id="res" name="res">{{ error }}</h5>
+        {% else %}
+            <h5 class="ml-3" id="res" name="res">{{ res }}</h5>
+        {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+
